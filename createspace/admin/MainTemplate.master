@@ -1,0 +1,70 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MainTemplate.master.cs" Inherits="admin_MainTemplate" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        #header {
+            background-color: black;
+            color: white;
+            padding: 5px;
+        }
+
+        #nav {
+            line-height: 30px;
+            background-color: #eeeeee;
+            height: 700px;
+            width: 12%;
+            float: left;
+            padding: 5px;
+        }
+
+        #section {
+            width: 85%;
+            float: left;
+            padding: 10px;
+        }
+
+        #footer {
+            background-color: black;
+            color: white;
+            clear: both;
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <div id="header">
+            <h1>众创空间预约管理系统</h1>
+            <div style="float: right;">
+                <asp:LinkButton runat="server" ID="LikAccount" Text="TempleName"></asp:LinkButton>
+                <asp:LinkButton runat="server" ID="LinLogout" Text="注销" OnClick="LinLogout_Click"></asp:LinkButton>
+
+            </div>
+        </div>
+
+        <div id="nav">
+            <a href="#">申请总览</a><br>
+            <a href="#">老师管理</a><br>
+            <a href="#">管理人员</a><br>
+            <a href="#">修改密码</a><br>
+        </div>
+
+        <div id="section">
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <div id="footer">Copyright ItStudio</div>
+    </form>
+</body>
+</html>

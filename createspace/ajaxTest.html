@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <button>asdasdsa</button>
+    <script type="text/javascript">
+        var dt = new Date();
+        dt.setHours(0);
+        dt.setMinutes(0);
+        dt.setSeconds(0);
+        var commonTime = Date.parse(dt)/1000;
+        $("button").click(function () {
+            $.get("TimeGetHandler.ashx", function (data) {
+                alert("ID: " + data.result[0].id + '\n哈哈哈:' + commonTime);
+            });
+        });
+
+    </script>
+</body>
+</html>
