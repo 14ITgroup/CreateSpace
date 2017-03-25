@@ -26,9 +26,10 @@
           <Property Name="title" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="body" Type="nvarchar(max)" Nullable="false" />
           <Property Name="mobile" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="deal" Type="bit" Nullable="false" />
-          <Property Name="apptime" Type="int" Nullable="false" />
+          <Property Name="deal" Type="int" Nullable="false" />
+          <Property Name="apptime" Type="bigint" Nullable="false" />
           <Property Name="createtime" Type="datetime" Nullable="false" />
+          <Property Name="dealtime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="usercontact">
           <Key>
@@ -58,21 +59,6 @@
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="applications">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="stuname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="state" Type="Int32" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="deal" Type="Boolean" Nullable="false" />
-          <Property Name="apptime" Type="Int32" Nullable="false" />
-          <Property Name="createtime" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
         <EntityType Name="usercontact">
           <Key>
             <PropertyRef Name="id" />
@@ -84,9 +70,25 @@
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admins" EntityType="Self.admins" />
-          <EntitySet Name="applications" EntityType="Self.applications" />
           <EntitySet Name="usercontact" EntityType="Self.usercontact" />
+          <EntitySet Name="applications" EntityType="createspaceModel.applications" />
         </EntityContainer>
+        <EntityType Name="applications">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="stuname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="body" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mobile" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="deal" Type="Int32" Nullable="false" />
+          <Property Name="apptime" Type="Int64" Nullable="false" />
+          <Property Name="createtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dealtime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -104,22 +106,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="applications">
-            <EntityTypeMapping TypeName="createspaceModel.applications">
-              <MappingFragment StoreEntitySet="applications">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="stuname" ColumnName="stuname" />
-                <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="body" ColumnName="body" />
-                <ScalarProperty Name="mobile" ColumnName="mobile" />
-                <ScalarProperty Name="deal" ColumnName="deal" />
-                <ScalarProperty Name="apptime" ColumnName="apptime" />
-                <ScalarProperty Name="createtime" ColumnName="createtime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="usercontact">
             <EntityTypeMapping TypeName="createspaceModel.usercontact">
               <MappingFragment StoreEntitySet="usercontact">
@@ -127,6 +113,23 @@
                 <ScalarProperty Name="usname" ColumnName="usname" />
                 <ScalarProperty Name="usemail" ColumnName="usemail" />
                 <ScalarProperty Name="usclass" ColumnName="usclass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="applications">
+            <EntityTypeMapping TypeName="createspaceModel.applications">
+              <MappingFragment StoreEntitySet="applications">
+                <ScalarProperty Name="dealtime" ColumnName="dealtime" />
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="apptime" ColumnName="apptime" />
+                <ScalarProperty Name="deal" ColumnName="deal" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="body" ColumnName="body" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="stuname" ColumnName="stuname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

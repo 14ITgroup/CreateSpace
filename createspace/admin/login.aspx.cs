@@ -31,7 +31,7 @@ public partial class admin_Login : System.Web.UI.Page
                     if (PasswordHash.PasswordHash.ValidatePassword(TxtPassword.Text, adCheck[0].password))
                     {
                         Session["UserId"] = adCheck[0].id.ToString();
-                        Response.Write("<script>alert('登录成功');window.location.href='AdminIndex.aspx'</script>");
+                        Response.Write("<script>alert('登录成功');window.location.href='index.aspx'</script>");
                     }
                     else
                     {

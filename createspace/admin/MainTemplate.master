@@ -52,9 +52,9 @@
         </div>
 
         <div id="nav">
-            <a href="#">申请总览</a><br>
-            <a href="#">老师管理</a><br>
-            <a href="#">管理人员</a><br>
+            <a href="index.aspx">申请总览</a><br>
+            <a href="ContactList.aspx">联系人管理</a><br>
+            <a href="#">管理员操作</a><br>
             <a href="#">修改密码</a><br>
         </div>
 

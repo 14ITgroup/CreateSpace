@@ -46,13 +46,22 @@ host:mail.stu.ouc.edu.cn
 |id|int|唯一标识|
 |email|nvarchar(100)|邮箱，为了确认邮件|
 |stuname|nvarchar(50)|申请人姓名|
-|state|int|状态(拒绝，同意，未处理)|
+|state|int|申请时间(上午，下午，晚上)|
 |title|nvarchar(100)|申请标题|
 |body|nvarchar(max)|申请主体|
 |mobile|nvarchar(20)|手机号，方便核实|
-|deal|bit|处理状态|
-|apptime|int|申请时间-时间戳形式|
+|deal|int|处理状态|
+|apptime|bigint|申请时间-时间戳形式|
 |createtime|datetime|创建时间|
+|dealtime|datetime|处理时间|
+
+关于一些数据的说明
+
+state : 0-上午 1-下午  2-晚上
+
+deal : 1-同意 2-拒绝  0-未处理
+
+apptime : 使用时间戳 以北京时间 0:00 为每天界限
 
 #### 3) usercontact
 
@@ -63,3 +72,6 @@ host:mail.stu.ouc.edu.cn
 |usemail|nvarchar(200)|联系人邮箱|
 |usclass|int|联系人权限|
 
+关于一些数据的说明
+
+usclass : 1-管理人(爱特)  0-通知人(老师)

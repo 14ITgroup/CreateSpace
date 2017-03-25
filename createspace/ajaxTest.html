@@ -7,19 +7,26 @@
 	<meta charset="utf-8" />
 </head>
 <body>
-    <button>asdasdsa</button>
+    <button id="b1">asdasdsa</button>
+    <button id="b2">asdasdsa</button>
+    <button id="b3">asdasdasd</button>
     <script type="text/javascript">
         var dt = new Date();
         dt.setHours(0);
         dt.setMinutes(0);
         dt.setSeconds(0);
         var commonTime = Date.parse(dt)/1000;
-        $("button").click(function () {
+        var postdata = {"BookDate": commonTime,"BookTime":1};
+        $("#b1").click(function () {
             $.get("TimeGetHandler.ashx", function (data) {
-                alert("ID: " + data.result[0].id + '\n哈哈哈:' + commonTime);
+                alert("ID: " + data.result[0].st + '\n哈哈哈:' + commonTime);
             });
         });
-
+        $("#b2").click(function () {
+            $.post("BookTimeHandler.ashx",postdata ,function (data) {
+                alert("ID: " + data.Bdate + '\n哈哈哈:' + data.Btime);
+            });
+        });
     </script>
 </body>
 </html>

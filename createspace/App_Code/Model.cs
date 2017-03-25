@@ -28,9 +28,10 @@ public partial class applications
     public string title { get; set; }
     public string body { get; set; }
     public string mobile { get; set; }
-    public bool deal { get; set; }
-    public int apptime { get; set; }
+    public int deal { get; set; }
+    public long apptime { get; set; }
     public System.DateTime createtime { get; set; }
+    public System.DateTime dealtime { get; set; }
 }
 
 public partial class usercontact

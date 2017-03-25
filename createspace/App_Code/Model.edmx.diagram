@@ -6,8 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="34524916972948c4bb6450c08eefbf51" Name="Diagram1">
         <EntityTypeShape EntityType="createspaceModel.admins" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="createspaceModel.applications" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="createspaceModel.usercontact" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="createspaceModel.applications" Width="1.5" PointX="2.625" PointY="0.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

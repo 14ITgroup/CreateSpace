@@ -7,21 +7,20 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "createspace", "createspace\
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_3319"
-		Debug.AspNetCompiler.PhysicalPath = "createspace\"
+		Debug.AspNetCompiler.PhysicalPath = "F:\C#\CreateSpace\createspace\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3319\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_3319"
-		Release.AspNetCompiler.PhysicalPath = "createspace\"
+		Release.AspNetCompiler.PhysicalPath = "F:\C#\CreateSpace\createspace\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3319\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "3319"
-		SlnRelativePath = "createspace\"
 	EndProjectSection
 EndProject
 Global

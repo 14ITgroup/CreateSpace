@@ -19,13 +19,13 @@ public partial class admin_MainTemplate : System.Web.UI.MasterPage
         }
         catch
         {
-            Response.Redirect("./Login.aspx");
+            //Response.Redirect("./Login.aspx");
         }
     }
 
     protected void LinLogout_Click(object sender, EventArgs e)
     {
         Session["UserId"] = null;
-        Response.Write("<script>alert('注销成功');window.location.href='AdminIndex.aspx'</script>");
+        Response.Write("<script>alert('注销成功');window.location.href='Login.aspx'</script>");
     }
 }

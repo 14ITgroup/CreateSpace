@@ -24,6 +24,6 @@ public partial class Entities : DbContext
     }
 
     public virtual DbSet<admins> admins { get; set; }
-    public virtual DbSet<applications> applications { get; set; }
     public virtual DbSet<usercontact> usercontact { get; set; }
+    public virtual DbSet<applications> applications { get; set; }
 }
