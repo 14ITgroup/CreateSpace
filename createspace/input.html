@@ -4,62 +4,65 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="./css/css.css">
-
+    <script src="./js/func_input.js"></script>
 </head>
 <body>
 <div class="nav">
     <a href="http://it.ouc.edu.cn/itstudio/PC/index.html"><img src="./img/it-ico.png" alt=""></a>
     <span class="title"><a href="index.html">众创空间自主预约</a></span>
 </div>
-<div id="form" >
-    <div class="mt mt-panel mt-panel-shadow" >
+<div id="form">
+    <div class="mt mt-panel mt-panel-shadow">
         <div class="mt-panel-header">
             <div class="mt-panel-header-text">时间预约:当前选择的时间为：<h3></h3></div>
         </div>
         <div class="mt-panel-body ">
-            <div class="mt mt-form" >
+            <div class="mt mt-form">
                 <div class="mt-form-body">
                     <div class="mt mt-field">
-                        <div class="mt-field-label" >输入姓名:</div>
+                        <div class="mt-field-label">输入姓名:</div>
                         <div class="mt-field-text"><input placeholder="请输入姓名" class="mt-field-text-input" value="">
-                            <div class="mt-field-error" ></div>
+                            <div class="mt-field-error"></div>
                         </div>
                     </div>
                     <div class="mt mt-field">
-                        <div class="mt-field-label" >联系方式:</div>
-                        <div class="mt-field-text"><input placeholder="请联系方式(方便认证)" class="mt-field-text-input" value="">
-                            <div class="mt-field-error" ></div>
+                        <div class="mt-field-label">联系方式:</div>
+                        <div class="mt-field-text"><input placeholder="请联系方式(方便认证)" class="mt-field-text-input"
+                                                          value="">
+                            <div class="mt-field-error"></div>
                         </div>
                     </div>
                     <div class="mt mt-field">
-                        <div class="mt-field-label" >输入邮箱:</div>
+                        <div class="mt-field-label">输入邮箱:</div>
                         <div class="mt-field-text"><input placeholder="请输入电子邮箱" class="mt-field-text-input" value="">
-                            <div class="mt-field-error" ></div>
+                            <div class="mt-field-error"></div>
                         </div>
                     </div>
                     <div class="mt mt-field">
-                        <div class="mt-field-label" >活动主办方:</div>
+                        <div class="mt-field-label">活动主办方:</div>
                         <div class="mt-field-text"><input placeholder="请输入活动主办方" class="mt-field-text-input" value="">
-                            <div class="mt-field-error" ></div>
+                            <div class="mt-field-error"></div>
                         </div>
                     </div>
                     <div class="mt mt-field">
-                        <div class="mt-field-label" >申请主题:</div>
-                        <div class="mt-field-text"><input placeholder="申请主题" class="mt-field-text-input" value="" >
-                            <div class="mt-field-error" ></div>
+                        <div class="mt-field-label">申请主题:</div>
+                        <div class="mt-field-text"><input placeholder="申请主题" class="mt-field-text-input" value="">
+                            <div class="mt-field-error"></div>
                         </div>
                     </div>
                     <div class="mt mt-field mt-textarea">
-                        <div class="mt-field-label" >申请内容:</div>
+                        <div class="mt-field-label">申请内容:</div>
                         <div class="mt-textarea-text">
-                            <textarea autocomplete="off" placeholder="" type="text" class="mt-textarea-text-input" value=""></textarea>
+                            <textarea autocomplete="off" placeholder="" type="text" class="mt-textarea-text-input"
+                                      value=""></textarea>
                         </div>
                     </div>
 
                 </div>
                 <div class="mt-button">
                     <input type="hidden" name="id" value="">
-                    <button id="mt-submit" type="submit" class="button form-button is-disabled" aria-expanded="false" value="前往预约" >
+                    <button id="mt-submit" type="submit" class="button form-button is-disabled" aria-expanded="false"
+                            value="前往预约" onclick="getinfo()">
                         前往预约
                     </button>
                 </div>

@@ -29,7 +29,6 @@ $(".timepicker-cell").click(function(e){
     for (i = 0; i < c.length; i++) {
         if (c[i] == b) {
             d = i;//d是文字
-            
         }
     }
 
@@ -65,11 +64,12 @@ var myWindow;
 function submitClick() {
     if (isclick == 1) {
         var thisDate = new Date();
-        var year = myDate.getFullYear();
-        var month = myDate.getMonth() + 1;
-        var time = myDate.getDay();
-        var commonTime = new Date(Date.UTC(year, month - 1, day, hour, minute, second))
-        window.open('input.html');
+        thisDate.setHours(0);
+        thisDate.setMinutes(0);
+        thisDate.setSeconds(0);
+        var commonTime = thisDate.parse(dt) / 1000;
+        commonTime += g*24*60*60;
+       // window.open("input.html?thisDate="+commonTime+"&&thisstate="+d+"");
     }
     else {
         alert("请选择要预约的时间！");
@@ -104,47 +104,54 @@ function timeChange() {
             break;
     }
 }
-function dateChange() {
-    if (date <10 ){
-        date = "0"+date;
+function dayChange() {
+    if (day < 10 ){
+        day = "0" + day;
     }
-
+    if(daylate < 10 ){
+        daylate = "0" + daylate;
+    }
 }
-var myDate = new Date();
-var year = myDate.getFullYear();
-var month = myDate.getMonth()+1;
-var date = myDate.getDate();
-var time = myDate.getDay();
+var date, year, month, day, time, monthlate, daylate;
+
 for(var i=0; i<7; i++){
-    date = date + i;
-    time = time + i;
-    if(time > 7){
-        time = time - 7;
-    }
+    var now = new Date();
+    date = new Date(now.getTime() + i * 24 * 3600 * 1000);
+    year = date.getFullYear();
+    month = date.getMonth() + 1;
+    day = date.getDate();
+    time = date.getDay();
     timeChange();
-    dateChange();
-    document.getElementsByTagName('th')[i].innerHTML = month + "月" + date + "日 " + "星期" + time;
+    dayChange();
+    document.getElementsByTagName('th')[i].innerHTML = month + "月" + day + "日 " + "星期" + time;
     document.getElementsByClassName('date-text')[i].innerHTML = "星期" + time ;
-    document.getElementsByClassName('date-number')[i].innerHTML = date + "日";
-    date = myDate.getDate();
-    time = myDate.getDay();
+    document.getElementsByClassName('date-number')[i].innerHTML = day + "日";
 }
 
-var datelate = date + 6;
-document.getElementsByTagName('h4')[0].innerHTML =  month + " 月 " + date + " 日 " +" - " + month + " 月 " + datelate + " 日 ";
+var now = new Date();
+month = now.getMonth()+1;
+day = now.getDate();
+date= new Date(now.getTime() + 6 * 24 * 3600 * 1000);
+monthlate = date.getMonth() + 1;
+daylate = date.getDate();
+dayChange()
+document.getElementsByTagName('h4')[0].innerHTML =  month + " 月 " + day + " 日 " +" - " + monthlate + " 月 " + daylate + " 日 ";
 
-date = myDate.getDate();
-time = myDate.getDay();
+
 
 for(var j=0; j<7; j++){
-    date = date + j;
-    time = time + j;
+    var now = new Date();
+    date = new Date(now.getTime() + i * 24 * 3600 * 1000);
+    year = date.getFullYear();
+    month = date.getMonth() + 1;
+    day = date.getDate();
+    time = date.getDay();
     if(time > 7){
         time = time - 7;
     }
     timeChange();
-    dateChange();
-    var setTime =  date + "日 " + "星期" + time + ".";
+    dayChange();
+    var setTime =  day + "日 " + "星期" + time + ".";
     for(var l = 0;l < 3;l++) {
         document.getElementsByTagName('p')[j*3+l].innerHTML = setTime;
     }
@@ -184,9 +191,28 @@ window.onresize = function(){
     width_two = width_one;
 };
 /*
- * 页面传值获取
+ * 接收json数据
  */
+setCheck();
+function setCheck() {
+    $.get("TimeGetHandler.ashx", function (data) {
+        var Data = eval('(' + data + ')');
+        var obj = Data.result;
+        var result = new Array(21);
 
-function isClickChange() {
+        for (var i = 0; i < json1.length ; i++) {
+
+            result[i] = obj.st;
+            var td = int(i / 3) + 1;
+            var li = int(i % 3);
+            if (li = 0)
+                li = 3;
+            var setButton = $("td:nth-child(td)>ol>li:nth-child(li)>div>button");
+            if (result = 0) {
+                setButton.setAttribute("disable", "ture");
+            }
+        }
+    })
+    
 
 }
