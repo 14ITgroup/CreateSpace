@@ -8,6 +8,7 @@ var isclick = 0;
 
 document.onclick = function(){
     isclick = 0;
+    $(".timepicker-cell").removeClass("checked");
 };
 $(".timepicker-small .timepicker-small-timeslot-list input[type=radio]").click(function(e){
     isclick = 1;
@@ -20,6 +21,8 @@ $(".timepicker-small .timepicker-small-timeslot-list input[type=radio]").click(f
     }
 })
 $(".timepicker-cell").click(function(e){
+    $(".timepicker-cell").removeClass("checked");
+    $(this).addClass("checked");
     isclick = 1;
     var a = this.parentNode.parentNode.parentNode.parentNode.parentNode;
 
@@ -60,16 +63,25 @@ $("#timepicker-submit").click(function(e){
         window.event.cancelBubble = true;//兼容IE
     }
 })
-var myWindow;
 function submitClick() {
     if (isclick == 1) {
-        var thisDate = new Date();
-        thisDate.setHours(0);
-        thisDate.setMinutes(0);
-        thisDate.setSeconds(0);
-        var commonTime = thisDate.parse(dt) / 1000;
-        commonTime += g*24*60*60;
-       // window.open("input.html?thisDate="+commonTime+"&&thisstate="+d+"");
+        var counti= 0;
+        var countj= 0;
+        for (var i = 1;i<=7;i++) {
+            for (var j = 1; j <=3; j++) {
+                var className = $(".timepicker-wrapper-row>.timepicker-date-column:nth-child("+(i)+")>ol>.timepicker-interval-row:nth-child(" + (j) + ")>div>button");
+                if (className.hasClass("checked")) {
+                    counti = i;
+                    countj = j;
+
+                }
+            }
+        }
+        date = new Date(now.getTime() + (counti-1)* 24 * 3600 * 1000);
+        var timestamp = Date.parse(date);
+        timestamp = timestamp / 1000;
+        window.location.href = "input.html?time="+timestamp+"&state="+countj;
+
     }
     else {
         alert("请选择要预约的时间！");
@@ -155,8 +167,6 @@ for(var j=0; j<7; j++){
     for(var l = 0;l < 3;l++) {
         document.getElementsByTagName('p')[j*3+l].innerHTML = setTime;
     }
-    date = myDate.getDate();
-    time = myDate.getDay();
 }
 
 
