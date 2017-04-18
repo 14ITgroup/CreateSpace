@@ -32,6 +32,7 @@ state = Request["state"];
 hour = "上午";
 
 switch (state){
+<<<<<<< HEAD
     case "0":
         hour = "上午";
         break;
@@ -39,6 +40,15 @@ switch (state){
         hour = "下午";
         break;
     case "2":
+=======
+    case "1":
+        hour = "上午";
+        break;
+    case "2":
+        hour = "下午";
+        break;
+    case "3":
+>>>>>>> origin/master
         hour = "晚上";
         break;
 }

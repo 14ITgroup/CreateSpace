@@ -75,7 +75,11 @@ function submitClick() {
                 var className = $(".timepicker-wrapper-row>.timepicker-date-column:nth-child("+(i)+")>ol>.timepicker-interval-row:nth-child(" + (j) + ")>div>button");
                 if (className.hasClass("checked")) {
                     counti = i;
+<<<<<<< HEAD
                     countj = j-1;
+=======
+                    countj = j;
+>>>>>>> origin/master
 
                 }
             }
@@ -154,6 +158,28 @@ document.getElementsByTagName('h4')[0].innerHTML =  month + " 月 " + day + " �
 
 
 
+<<<<<<< HEAD
+=======
+for(var j=0; j<7; j++){
+    var now = new Date();
+    date = new Date(now.getTime() + i * 24 * 3600 * 1000);
+    year = date.getFullYear();
+    month = date.getMonth() + 1;
+    day = date.getDate();
+    time = date.getDay();
+    if(time > 7){
+        time = time - 7;
+    }
+    timeChange();
+    dayChange();
+    var setTime =  day + "日 " + "星期" + time + ".";
+    for(var l = 0;l < 3;l++) {
+        document.getElementsByTagName('p')[j*3+l].innerHTML = setTime;
+    }
+}
+
+
+>>>>>>> origin/master
 /*
  * 页面且切换
  */
