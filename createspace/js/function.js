@@ -5,9 +5,13 @@
  * 是否预约检测
  */
 var isclick = 0;
+var jsonResult = {};
+var jsonData = null;
+setCheck();
 
 document.onclick = function(){
     isclick = 0;
+    $(".timepicker-cell").removeClass("checked");
 };
 $(".timepicker-small .timepicker-small-timeslot-list input[type=radio]").click(function(e){
     isclick = 1;
@@ -20,6 +24,8 @@ $(".timepicker-small .timepicker-small-timeslot-list input[type=radio]").click(f
     }
 })
 $(".timepicker-cell").click(function(e){
+    $(".timepicker-cell").removeClass("checked");
+    $(this).addClass("checked");
     isclick = 1;
     var a = this.parentNode.parentNode.parentNode.parentNode.parentNode;
 
@@ -60,16 +66,25 @@ $("#timepicker-submit").click(function(e){
         window.event.cancelBubble = true;//兼容IE
     }
 })
-var myWindow;
 function submitClick() {
     if (isclick == 1) {
-        var thisDate = new Date();
-        thisDate.setHours(0);
-        thisDate.setMinutes(0);
-        thisDate.setSeconds(0);
-        var commonTime = thisDate.parse(dt) / 1000;
-        commonTime += g*24*60*60;
-       // window.open("input.html?thisDate="+commonTime+"&&thisstate="+d+"");
+        var counti= 0;
+        var countj= 0;
+        for (var i = 1;i<=7;i++) {
+            for (var j = 1; j <=3; j++) {
+                var className = $(".timepicker-wrapper-row>.timepicker-date-column:nth-child("+(i)+")>ol>.timepicker-interval-row:nth-child(" + (j) + ")>div>button");
+                if (className.hasClass("checked")) {
+                    counti = i;
+                    countj = j-1;
+
+                }
+            }
+        }
+        date = new Date(now.getTime() + (counti-1)* 24 * 3600 * 1000);
+        var timestamp = Date.parse(date);
+        timestamp = timestamp / 1000;
+        window.location.href = "input.html?time="+timestamp+"&state="+countj;
+
     }
     else {
         alert("请选择要预约的时间！");
@@ -139,27 +154,6 @@ document.getElementsByTagName('h4')[0].innerHTML =  month + " 月 " + day + " �
 
 
 
-for(var j=0; j<7; j++){
-    var now = new Date();
-    date = new Date(now.getTime() + i * 24 * 3600 * 1000);
-    year = date.getFullYear();
-    month = date.getMonth() + 1;
-    day = date.getDate();
-    time = date.getDay();
-    if(time > 7){
-        time = time - 7;
-    }
-    timeChange();
-    dayChange();
-    var setTime =  day + "日 " + "星期" + time + ".";
-    for(var l = 0;l < 3;l++) {
-        document.getElementsByTagName('p')[j*3+l].innerHTML = setTime;
-    }
-    date = myDate.getDate();
-    time = myDate.getDay();
-}
-
-
 /*
  * 页面且切换
  */
@@ -193,26 +187,30 @@ window.onresize = function(){
 /*
  * 接收json数据
  */
-setCheck();
+
 function setCheck() {
-    $.get("TimeGetHandler.ashx", function (data) {
-        var Data = eval('(' + data + ')');
-        var obj = Data.result;
-        var result = new Array(21);
 
-        for (var i = 0; i < json1.length ; i++) {
-
-            result[i] = obj.st;
-            var td = int(i / 3) + 1;
-            var li = int(i % 3);
-            if (li = 0)
-                li = 3;
-            var setButton = $("td:nth-child(td)>ol>li:nth-child(li)>div>button");
-            if (result = 0) {
-                setButton.setAttribute("disable", "ture");
+    $.get("TimeGetHandler.ashx",function(data){
+        console.log(data);
+        jsonData = data;
+        var obj = jsonData.result;
+        console.log(obj);
+        for (var i = 0; i < obj.length ; i++) {
+            jsonResult[i] = obj[i].st;
+            
+            var td = parseInt(i / 3) + 1;
+            var li = i % 3;
+            console.log(li+"  "+td);
+            //if (li == 0)
+             //   li = 3;
+            var setButton = $(".timepicker-wrapper-row>.timepicker-date-column:nth-child(" + (td) + ")>ol>.timepicker-interval-row:nth-child(" + (li+1) + ")>div>button");
+            if (jsonResult[i] == 0) {
+                setButton.attr("disabled", "disabled");
+            }
+            else {
+                setButton.removeAttr("disabled", "disabled");
             }
         }
-    })
-    
-
+    });
 }
+

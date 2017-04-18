@@ -19,7 +19,7 @@ public partial class admin_MainTemplate : System.Web.UI.MasterPage
         }
         catch
         {
-            //Response.Redirect("./Login.aspx");
+            Response.Redirect("./Login.aspx");
         }
     }
 

@@ -156,7 +156,7 @@ public partial class admin_AdminIndex : System.Web.UI.Page
                 temp.AppName = oriData[i].stuname;
                 temp.dealstate = oriData[i].deal;
                 temp.AppTitle = oriData[i].title;
-                TimeTrans.UnixTimestampToDateTime(temp.AppTime, oriData[i].apptime);
+                temp.AppTime=TimeTrans.UnixTimestampToDateTime(temp.AppTime, oriData[i].apptime);
                 transResult.Add(temp);
             }
         }

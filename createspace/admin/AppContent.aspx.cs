@@ -18,7 +18,7 @@ public partial class admin_AppContent : System.Web.UI.Page
                 {
                     var app = db.applications.First(a => a.id == appid);
                     DateTime dt = new DateTime();
-                    TimeTrans.UnixTimestampToDateTime(dt, app.apptime);
+                    dt=TimeTrans.UnixTimestampToDateTime(dt, app.apptime);
                     string appDate = dt.ToString("yyyy年MM月dd日");
                     string DateState = "";
                     switch (app.state)
@@ -63,12 +63,13 @@ public partial class admin_AppContent : System.Web.UI.Page
                                   select it).ToList();
                 if (failedList.Count != 0)
                 {
+                    db.SaveChanges();
                     for (int i = 0; i < failedList.Count; i++)
                     {
                         failedList[i].deal = 2;
                         MyMail.appReMail(failedList[i]);
                     }
-                    db.SaveChanges();
+                    
                 }
                 MyMail.appReMail(my);
                 MyMail.teacherMail(my);

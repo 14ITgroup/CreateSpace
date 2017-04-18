@@ -13,6 +13,7 @@ public class TimeGetHandler : IHttpHandler
         HttpResponse res = context.Response;
         HttpRequest req = context.Request;
         res.ContentType = "json";
+        //res.ContentType = "json";
 
         DateTime dt = DateTime.Today;
 
@@ -31,7 +32,7 @@ public class TimeGetHandler : IHttpHandler
                              select it).ToList();
                     if (f.Count != 0) midText += "{\"st\": 0 }";
                     else midText += "{\"st\": 1 }";
-                    if (i != 6 && i != 2) midText += ",";
+                    if (i != 6 || j != 2) midText += ",";
                 }
                 Lnow += 24 * 60 * 60;
             }

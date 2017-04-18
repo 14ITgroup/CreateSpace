@@ -27,7 +27,7 @@ public static class TimeTrans
     /// <returns></returns>
     public static DateTime UnixTimestampToDateTime(this DateTime target, long timestamp)
     {
-        var start = new DateTime(1970, 1, 1, 8, 0, 0, target.Kind);
-        return start.AddSeconds(timestamp);
+        target = new DateTime(1970, 1, 1, 8, 0, 0, target.Kind);
+        return target.AddSeconds(timestamp);
     }
 }

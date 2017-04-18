@@ -428,7 +428,11 @@ button {
     box-sizing: content-box;
     cursor: pointer;
     overflow: visible;
+
 }
+/*button:focus{*/
+    /*outline: none;*/
+/*}*/
 .timepicker-cell:hover,.timepicker-cell:active{
     box-shadow:4px 0 6px #80bbf6,-4px 0 6px #80bbf6,0 4px 6px #80bbf6,0 -4px 6px #80bbf6;
  }
@@ -964,7 +968,7 @@ button:disabled,button:disabled:hover{
 }
 
 .mt-panel .mt-panel-header-text {
-    width: 50%;
+    width: 56%;
     margin:0 auto;
     color: #333333;
     font-size: 22px;
