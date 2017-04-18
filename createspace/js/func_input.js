@@ -3,6 +3,7 @@
  */
 /*
  * input参数收集
+<<<<<<< HEAD
  * 传递的参数为time，state
  */
 function GetRequest() {
@@ -32,7 +33,6 @@ state = Request["state"];
 hour = "上午";
 
 switch (state){
-<<<<<<< HEAD
     case "0":
         hour = "上午";
         break;
@@ -40,15 +40,6 @@ switch (state){
         hour = "下午";
         break;
     case "2":
-=======
-    case "1":
-        hour = "上午";
-        break;
-    case "2":
-        hour = "下午";
-        break;
-    case "3":
->>>>>>> origin/master
         hour = "晚上";
         break;
 }
@@ -87,9 +78,10 @@ document.getElementsByClassName("mt-panel-header-text")[0].innerHTML="当前选�
 
 /*
     判断是否输入正确信息
+=======
+>>>>>>> parent of 57cdc11... 2017.4.18修改
  */
 function getinfo() {
-
     var name = $(".mt-form-body>.mt:nth-child(1)>div+div>input").val();
     var tel = $(".mt-form-body>.mt:nth-child(2)>div+div>input").val();
     var email = $(".mt-form-body>.mt:nth-child(3)>div+div>input").val();
@@ -110,29 +102,8 @@ function getinfo() {
         return false;
     }
     else {
-        var nowDt = new Date(time * 1000);
-        nowDt.setHours(0);
-        nowDt.setMinutes(0);
-        nowDt.setSeconds(0);
-        var nowtimestamp = Date.parse(nowDt);
-        nowtimestamp = nowtimestamp / 1000;
-        var postdata = {
-            "bDate": nowtimestamp,
-            "bTime": state,
-            "bName": name,
-            "bEmail": email,
-            "bTitle": theme,
-            "bBody": content,
-            "bMobile":tel
-        }
-        $.post("BookTimeHandler.ashx", postdata, function (data) {
-            if (data.state == 1) {
-                alert("预约成功");
-            } else {
-                console.log(data.state);
-                alert("预约失败，请重新预约");
-            }
-        });
+        alert("预约成功");
     }
+
 
 }

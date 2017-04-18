@@ -34,12 +34,8 @@ public class MyMail
             {
                 usercontact my = adminList[i];
                 string emailContent = "尊敬的" + my.usname + ",有一条新的众创空间申请等待处理，请您点击以下页面进入<a href =\"#\">点我</a>";
-                try
-                {
-                    Mail.SendEmail(myEmail, myPassword, my.usemail, emailTitle, emailContent, myHost);
-                    result++;
-                }
-                catch { }
+                Mail.SendEmail(myEmail, myPassword, my.usemail, emailTitle, emailContent, myHost);
+                result++;
             }
         }
         return result;
@@ -69,15 +65,8 @@ public class MyMail
             {
                 usercontact my = teacherList[i];
                 string emailContent = "尊敬的" + my.usname + ",由申请人:" + things.stuname + ",提出的于" + appDate + " " + DateState + "的申请已被同意。申请理由为:" + things.body + "\n如有安排请通知爱特工作室";
-                try
-                {
-                    Mail.SendEmail(myEmail, myPassword, my.usemail, emailTitle, emailContent, myHost);
-                    result++;
-                }
-                catch
-                {
-
-                }
+                Mail.SendEmail(myEmail, myPassword, my.usemail, emailTitle, emailContent, myHost);
+                result++;
             }
         }
         return result;
@@ -88,7 +77,7 @@ public class MyMail
         int result = 0;
         string emailTitle = "您的众创空间使用申请已成功发出";
         DateTime dt = new DateTime();
-        dt = TimeTrans.UnixTimestampToDateTime(dt, things.apptime);
+        TimeTrans.UnixTimestampToDateTime(dt, things.apptime);
         string appDate = dt.ToString("yyyy年MM月dd日");
         string DateState = "";
         switch (things.state)
@@ -98,7 +87,6 @@ public class MyMail
             case 2: DateState = "晚上"; break;
         }
         string emailContent = things.stuname + "您好,您提出的于" + appDate + " " + DateState + "的申请已发出并且等待管理员审核。申请理由为:" + things.body + "\n如有特殊情况请联系爱特工作室";
-
         result = Mail.SendEmail(myEmail, myPassword, things.email, emailTitle, emailContent, myHost);
         return result;
     }
@@ -112,7 +100,7 @@ public class MyMail
         if (things.deal == 1) { emailTitle = "您的众创空间使用申请已被同意"; finalState = "同意"; nextText = "。请使用器械时小心拿放，以免损坏。谢谢合作！"; }
         else { emailTitle = "您的众创空间使用申请已被拒绝"; finalState = "拒绝"; nextText = "。请更换申请时间。谢谢合作！"; }
         DateTime dt = new DateTime();
-        dt = TimeTrans.UnixTimestampToDateTime(dt, things.apptime);
+        TimeTrans.UnixTimestampToDateTime(dt, things.apptime);
         string appDate = dt.ToString("yyyy年MM月dd日");
         string DateState = "";
         switch (things.state)
@@ -121,7 +109,7 @@ public class MyMail
             case 1: DateState = "下午"; break;
             case 2: DateState = "晚上"; break;
         }
-        string emailContent = things.stuname + "您好,您提出的于" + appDate + " " + DateState + "的申请已被" + finalState + nextText;
+        string emailContent = things.stuname + "您好,您提出的于" + appDate + " " + DateState + "的申请已被"+finalState+nextText;
         result = Mail.SendEmail(myEmail, myPassword, things.email, emailTitle, emailContent, myHost);
         return result;
     }
@@ -131,7 +119,7 @@ public class MyMail
         int result = 0;
         string emailTitle = "您的众创空间使用申请已取消";
         DateTime dt = new DateTime();
-        dt = TimeTrans.UnixTimestampToDateTime(dt, things.apptime);
+        TimeTrans.UnixTimestampToDateTime(dt, things.apptime);
         string appDate = dt.ToString("yyyy年MM月dd日");
         string DateState = "";
         switch (things.state)

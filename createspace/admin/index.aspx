@@ -19,20 +19,19 @@
             <td>处理状态</td>
             <td>操作</td>
         </tr>
-        
+        <tr>
             <asp:Repeater runat="server" ID="RptCon" OnItemCommand="RptCon_ItemCommand">
                 <ItemTemplate>
-                    <tr>
-                    <td><a href="AppContent.aspx?appid=<%#Eval("id")%>"><%#Eval("AppTitle")%></a></td>
+                    <td><a href="AppContent.aspx?<%#Eval("id")%>"><%#Eval("AppTitle")%></a></td>
                     <td><%#Eval("AppName")%></td>
                     <td><%#Eval("AppTime")%></td>
                     <td><%#Eval("tim")%></td>
                     <td><%#Eval("dealstate")%></td>
-                    <td><a href="AppContent.aspx?appid=<%#Eval("id")%>">查看详情</a></td></tr>
+                    <td><a href="AppContent.aspx?id=<%#Eval("id")%>">查看详情</a></td>
                 </ItemTemplate>
             </asp:Repeater>
 
-        
+        </tr>
     </table>
     <asp:Button runat="server" ID="BtnFirst" Text="首页" OnClick="BtnFirst_Click" />
     <asp:Button runat="server" ID="BtnLast" Text="上一页" OnClick="BtnLast_Click" />
