@@ -32,13 +32,13 @@ state = Request["state"];
 hour = "上午";
 
 switch (state){
-    case 1:
+    case "1":
         hour = "上午";
         break;
-    case 2:
+    case "2":
         hour = "下午";
         break;
-    case 3:
+    case "3":
         hour = "晚上";
         break;
 }
