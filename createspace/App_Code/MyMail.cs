@@ -18,7 +18,7 @@ public class MyMail
 
     protected static string myEmail = "itstudio@stu.ouc.edu.cn";
 
-    protected static string myPassword = "Itdn2016";
+    protected static string myPassword = "";
 
     protected static string myHost = "mail.stu.ouc.edu.cn";
 
