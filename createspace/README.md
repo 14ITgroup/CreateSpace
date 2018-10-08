@@ -7,8 +7,6 @@
 
 ### 1.邮件
 本网站后台邮件发送使用中国海洋大学学生邮箱itstudio@stu.ouc.edu.cn
-密码:Itdn2016
-host:mail.stu.ouc.edu.cn
 
 ## 二、目录或文件说明
 | 名字 | 类型 | 说明 |
